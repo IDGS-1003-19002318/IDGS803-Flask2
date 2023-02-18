@@ -1,0 +1,17 @@
+{%extends "layout.html" %}
+{%block content%}
+{%from "_macros.html" import render_field%}
+
+<form method="post" class="form-group">
+     <div class="col-md-6">
+          {{render_field(form.matricula)}}
+          {{render_field(form.nombre)}}
+          {{render_field(form.apaterno)}}
+          {{render_field(form.email)}}
+          <button type="submit" class="btn btn-primary mt-3">
+               <i class="icon-ok"></i> Guardar
+          </button>
+     </div>
+</form>
+
+{%endblock%}

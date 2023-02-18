@@ -1,0 +1,31 @@
+{%extends "layout.html"%}
+
+{%block content%}
+{%from "_macros.html" import render_field%}
+
+<form method="post" class="form-group">
+     <div class="col-md-6">
+          {{render_field(form.numero)}}
+          <button type="submit" class="btn btn-primary mt-3">
+               <i class="icon-ok"></i> Guardar
+          </button>
+     </div>
+</form>
+
+{{form.numero.data}}
+{% if form.numero.data | int > 0%}
+     <form method="post" class="form-group" action="/response">
+          {% for item in range(form.numero.data | int)  %}
+          {%from "_macros.html" import render_input%}
+          {{render_input('num'+item|string, 'Numero '+(item|int+1)|string, type='number')}}
+          {% endfor %}
+          <button type="submit" class="btn btn-primary mt-3">
+               <i class="icon-ok"></i>Guardar
+          </button>
+     </form>
+{% endif %}
+
+
+
+
+{%endblock%}
