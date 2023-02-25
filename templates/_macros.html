@@ -2,16 +2,23 @@
 <div class="control-group">
      <label class="control-label" for="{{name}}">{{placeholder}}</label>
      <div class="controls">
-          <input type="{{type}}" id="{{name}}" name="{{name}}" placeholder="{{placeholder}}">
+          <input type="{{type}}" id="{{name}}" name="{{name}}" placeholder="{{placeholder}}" class="form-control">
      </div>
 </div>
 {%endmacro%}
 
 {%macro render_field(field)%}
-<div class="control-group">
-     <div class="controls">
+<div class="input-group">
+     <div class="form-control">
           {{field.label}} 
           {{field(**kwargs) | safe}}
      </div>
 </div>
+{% if field.errors %}
+     <ul>
+          {% for error in field.errors %}
+               <li style="color: red;">{{error}}</li>
+          {% endfor %}
+     </ul>
+{% endif %}
 {%endmacro%}

@@ -13,7 +13,7 @@
 </form>
 
 {% if form.numero.data is not none %}
-{{form.numero.data}}
+<!-- {{form.numero.data}} -->
 <form method="post" class="form-group">
      {% for item in range(form.numero.data | int)  %}
      {%from "_macros.html" import render_input%}
