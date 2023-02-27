@@ -1,5 +1,66 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-  
+{%from "_macros.html" import render_field%}
+
+<div class="d-flex justify-content-evenly">
+    <div class="col-">
+        <h1>Guardar traducciones</h1>
+        <form method="post" class="form-group">
+            {{form.csrf_token}}
+            <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+            {{render_field(form.palabra, class_="form-control")}}
+            {{render_field(form.traduccion, class_="form-control")}}
+            {{render_field(form.idioma, class_="form-control")}}
+            <button type="submit" class="btn btn-primary mt-3">
+                <i class="bi bi-save-fill"></i> Guardar
+            </button>
+        </form>
+    </div>
+    <div class="col-">
+        <h1>Buscar traducciones</h1>
+        <form method="post" class="form-group">
+            {{form2.csrf_token}}
+            <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+            {{render_field(form2.palabra, class_="form-control")}}
+            {{render_field(form2.idioma, class_="form-control")}}
+            <button type="submit" class="btn btn-primary mt-3">
+                <i class="bi bi-search"></i> Buscar
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="d-flex justify-content-evenly">
+    <div class="col-">
+        
+    </div>
+</div>
+
+{#
+<div class="d-flex justify-content-evenly">
+    <div class="col-">
+        <h1>Traducciones</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Palabra</th>
+                    <th scope="col">Traducción</th>
+                    <th scope="col">Idioma</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for traduccion in traducciones %}
+                <tr>
+                    <td>{{traduccion.palabra}}</td>
+                    <td>{{traduccion.traduccion}}</td>
+                    <td>{{traduccion.idioma}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+#}
+
 {% endblock content %}
