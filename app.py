@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, request, make_response, flash
 import forms
 from act2_Translator import Translator
+from act3_Resistencias import Resistencia
 from flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)
@@ -11,6 +12,16 @@ csrf = CSRFProtect(app)
 @app.errorhandler(404)
 def no_encontrada(e):
     return render_template('404.html'), 404
+
+
+@app.route("/resistencia", methods=['GET', 'POST'])
+def resistencia():
+    resistors = Resistencia()
+    resistencia = forms.ResistenciaForm(request.form)
+    if request.method == 'POST' and resistencia.validate():
+        resistencia = forms.ResistenciaForm(request.form)
+        flash('Calculo registrado', 'success')
+    return render_template('resistencia.html', form=resistencia)
 
 
 @app.route("/traductor", methods=['GET', 'POST'])

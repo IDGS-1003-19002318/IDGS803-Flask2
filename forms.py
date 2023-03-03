@@ -56,3 +56,53 @@ class BuscadorForm(FlaskForm):
     ])
     idioma = SelectField('Idioma', choices=[('1', 'Español - Ingles'), ('2', 'English - Spanish')], default='1')
     submit = SubmitField('Guardar')
+
+
+class ResistenciaForm(FlaskForm):
+    banda1 = SelectField('Banda 1', choices=[('1', 'Negro'), 
+                                                  ('2', 'Marron'), 
+                                                  ('3', 'Rojo'), 
+                                                  ('4', 'Naranja'), 
+                                                  ('5', 'Amarillo'), 
+                                                  ('6', 'Verde'), 
+                                                  ('7', 'Azul'), 
+                                                  ('8', 'Violeta'), 
+                                                  ('9', 'Gris'), 
+                                                  ('10', 'Blanco')], 
+                              default='1')
+    banda2 = SelectField('Banda 2', choices=[('1', 'Negro'), 
+                                                  ('2', 'Marron'), 
+                                                  ('3', 'Rojo'), 
+                                                  ('4', 'Naranja'), 
+                                                  ('5', 'Amarillo'), 
+                                                  ('6', 'Verde'), 
+                                                  ('7', 'Azul'), 
+                                                  ('8', 'Violeta'), 
+                                                  ('9', 'Gris'), 
+                                                  ('10', 'Blanco')], 
+                              default='1')
+    banda3 = SelectField('Banda 3', choices=[('1', 'Negro'), 
+                                                  ('2', 'Marron'), 
+                                                  ('3', 'Rojo'), 
+                                                  ('4', 'Naranja'), 
+                                                  ('5', 'Amarillo'), 
+                                                  ('6', 'Verde'), 
+                                                  ('7', 'Azul'), 
+                                                  ('8', 'Violeta'), 
+                                                  ('9', 'Gris'), 
+                                                  ('10', 'Blanco')], 
+                              default='1')
+    banda4 = SelectField('Banda 4', choices=[('1', 'Negro'), 
+                                                  ('2', 'Marron'), 
+                                                  ('3', 'Rojo'), 
+                                                  ('4', 'Naranja'), 
+                                                  ('5', 'Amarillo'), 
+                                                  ('6', 'Verde'), 
+                                                  ('7', 'Azul'), 
+                                                  ('8', 'Violeta'), 
+                                                  ('9', 'Gris'), 
+                                                  ('10', 'Blanco')], 
+                              default='1')
+    tolerancia = RadioField('Tolerancia', choices=[('1', 'Dorado = 5%'), ('2', 'Plateado = 10%')], default='1')
+    submit = SubmitField('Calcular')
+
