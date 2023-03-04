@@ -19,6 +19,7 @@ class Translator:
         f = open('traducciones.txt', 'r')
         f.seek(1)
         palabras = f.readlines()
+        palabras.pop(0)
         if palabras:
             if form['idioma'] == '1':
                 for item in palabras:

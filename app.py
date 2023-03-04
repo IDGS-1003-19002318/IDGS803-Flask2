@@ -30,14 +30,12 @@ def traductor():
     buscador = forms.BuscadorForm(request.form)
     traductor = forms.TraductorForm(request.form)
     traduccion = ''
-    if request.method == 'POST':
-        if traductor.validate():
-            translator.guardarTraduccion(traductor)
-            flash('Traduccion guardada', 'success')
-        elif buscador.validate():
-            traduccion = translator.traerTraduccion(buscador)
-            print(traduccion)
-            flash('Traduccion encontrada para la palabra {0} : {1}'.format(buscador.data["palabra"],traduccion), 'success')
+    if request.method == 'POST' and traductor.validate():
+        translator.guardarTraduccion(traductor)
+        flash('Traduccion guardada', 'success')
+    elif request.method == 'POST' and buscador.validate():
+        traduccion = translator.traerTraduccion(buscador)
+        flash('Traduccion encontrada para la palabra {0} : {1}'.format(buscador.data["palabra"],traduccion), 'success')
     return render_template('translator.html', form=traductor, form2=buscador, traduccion=traduccion)
 
 
