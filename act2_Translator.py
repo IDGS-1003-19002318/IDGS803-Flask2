@@ -23,12 +23,12 @@ class Translator:
         if palabras:
             if form['idioma'] == '1':
                 for item in palabras:
-                    if item.split(',')[0] == form['palabra']:
+                    if item.split(',')[0] == form['palabra'].lower():
                         traduccion = item.split(',')[1].replace('\n', '')
                         break
             else:
                 for item in palabras:
-                    if item.split(',')[1].replace('\n', '') == form['palabra']:
+                    if item.split(',')[1].replace('\n', '') == form['palabra'].lower():
                         traduccion = item.split(',')[0]
                         break
         else:

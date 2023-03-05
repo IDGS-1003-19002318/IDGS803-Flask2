@@ -12,29 +12,41 @@
             {{render_field(form.banda1, class_="form-control")}}
             {{render_field(form.banda2, class_="form-control")}}
             {{render_field(form.banda3, class_="form-control")}}
-            {{render_field(form.banda4, class_="form-control")}}
-            {{render_field(form.submit, class_="btn btn-primary")}}
-            <!-- <button type="submit" class="btn btn-primary mt-3">
+            {{render_field(form.tolerancia,class_="form-control")}}
+            <!-- {{render_field(form.submit, class_="btn btn-primary")}} -->
+            <button type="submit" class="btn btn-primary mt-3">
                 <i class="bi bi-calculator-fill"></i> Calcular
-            </button> -->
+            </button>
         </form>
     </div>
-    <div class="table-responsive">
-        <table class="table table-striped-columns">
-            <thead>
-                <tr>
-                    <th>Resistencia</th>
-                    <th>Tolerancia</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{form.banda1["data"]}}</td>
-                    <td>{{form.banda2}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    {% if res != {} %}    
+        <div class="table-responsive">
+            <table class="table table-striped-columns">
+                <thead>
+                    <tr>
+                        <th>Banda 1</th>
+                        <th>Banda 2</th>
+                        <th>Banda 3</th>
+                        <th>Tolerancia</th>
+                        <th>Valor</th>
+                        <th>Minimo</th>
+                        <th>Maximo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="background-color:{{banda1}}">{{form.banda1.data}}</td>
+                        <td style="background-color:{{banda2}}">{{form.banda2.data}}</td>
+                        <td style="background-color:{{banda3}}">{{form.banda3.data}}</td>
+                        <td style="background-color:{{tolerancia}}">{{form.tolerancia.data}}</td>
+                        <td>{{res['tot']}}</td>
+                        <td>{{res['min']}}</td>
+                        <td>{{res['max']}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
 </div>
 
 {% endblock %}

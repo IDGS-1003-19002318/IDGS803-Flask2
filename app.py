@@ -17,11 +17,20 @@ def no_encontrada(e):
 @app.route("/resistencia", methods=['GET', 'POST'])
 def resistencia():
     resistors = Resistencia()
+    res = {}
+    banda1 = ''
+    banda2 = ''
+    banda3 = ''
+    tolerancia = ''
     resistencia = forms.ResistenciaForm(request.form)
     if request.method == 'POST' and resistencia.validate():
-        resistencia = forms.ResistenciaForm(request.form)
+        banda1 = resistors.setColor(resistencia.banda1.data)
+        banda2 = resistors.setColor(resistencia.banda2.data)
+        banda3 = resistors.setColor(resistencia.banda3.data)
+        tolerancia = resistors.setTolerancia(resistencia.tolerancia.data)
+        res = resistors.calcular(resistencia)
         flash('Calculo registrado', 'success')
-    return render_template('resistencia.html', form=resistencia)
+    return render_template('resistencia.html', form=resistencia, banda1=banda1, banda2=banda2, banda3=banda3, tolerancia=tolerancia, res=res)
 
 
 @app.route("/traductor", methods=['GET', 'POST'])
