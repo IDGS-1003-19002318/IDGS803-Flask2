@@ -2,16 +2,17 @@ class Resistencia():
     
     def calcular(self, form):  
         form = form.data
-        suma = ((int(form['banda1']) * 10) + int(form['banda2'])) * (10 ** int(form['banda3']))
+        min = 0
+        max = 0
+        suma = (int(form['banda1']) * 10 + int(form['banda2'])) * 10 ** int(form['banda3'])
+          
         if form['tolerancia'] == '1':
-            tot = suma * .05
             min = suma - (suma * .05)
             max = suma + (suma * .05)
         else:
-            tot = suma * .10
             min = suma - (suma * .10)
             max = suma + (suma * .10)
-        return {'tot': tot, 'min': min, 'max': max}
+        return {'tot': suma, 'min': min, 'max': max}
     
     def setColor(self, color):
         colores = {
